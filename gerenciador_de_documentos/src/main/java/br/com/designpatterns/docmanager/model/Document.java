@@ -1,9 +1,19 @@
 package br.com.designpatterns.docmanager.model;
 
-public interface Document {
-    String getType();
+import java.io.IOException;
+import java.util.Scanner;
 
-    String getContent();
+public abstract class Document {
+    protected String filePath;
 
-    void setContent();
+    public Document(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public abstract void create() throws IOException;
+    public abstract void open() throws IOException;
+    public abstract void save() throws IOException;
+
+    // Operações de manipulação específicas para cada tipo de documento
+    public abstract void manipulate(Scanner scanner);
 }
